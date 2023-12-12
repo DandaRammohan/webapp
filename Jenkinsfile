@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+     agent { label 'aws-labels' }
 
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
@@ -9,6 +9,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                checkout scm
                 // Get some code from a GitHub repository
                 git 'https://github.com/DandaRammohan/webapp.git'
 
